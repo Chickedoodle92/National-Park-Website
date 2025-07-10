@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>National US Parks Article Finder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <meta name="keywords" content="HTML,CSS,JavaScript,National Parks,park,article finder">
+    <meta name="author" content="Andrew Cooper">
+</head>
+<body>
+    <header>
+  <a href="index.html" class="homebutton">Home</a>
+  <h1>U.S National Parks</h1>
+  <a href="about.html"  class="aboutbutton">About</a>
+  <a href="maps.html"  class="mapsbutton">Maps</a>
+  <a href="article.html" class="articlebutton">Article</a>
+  </header>
+    <h1>What other subjects are you interested in reading about?</h1>
+    <form id="subjectForm">
+        <label for="subjects">Please enter subjects (comma separated):</label><br>
+        <input type="text" id="subjects" name="subjects" placeholder="e.g., hiking, wildlife, history"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="response"></div>
+    <script>
+        document.getElementById('subjectForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const subjects = document.getElementById('subjects').value.trim();
+            if(subjects) {
+                // Redirect to a related article (for demo, use Wikipedia search)
+                const query = encodeURIComponent(subjects.split(',')[0]);
+                window.location.href = `https://en.wikipedia.org/wiki/Special:Search?search=${query}`;
+            } else {
+                document.getElementById('response').textContent = 
+                    "Please enter at least one subject.";
+            }
+        });
+    </script>
+    
+</body>
+<footer>
+  <div class="footer-content">
+    <p style="margin-left: 53px;">© 2025</p>
+    <a style="margin-right: 53px;" href="https://www.nps.gov/index.htm">Offical National Park Service Website</a>
+    </div>
+  </footer>
+</html>
